@@ -24,8 +24,8 @@
 ;
 
 
-%ifndef __gl_h_
-%define __gl_h_
+%ifndef __gl_asm_
+%define __gl_asm_
 
 %define GL_VERSION_1_1   1
 %define GL_VERSION_1_2   1
@@ -1086,224 +1086,173 @@ extern glCopyPixels
 ; Stenciling
 ;
 
-extern glStencilFunc( GLenum func, GLint ref, GLuint mask );
+extern glStencilFunc
 
-extern glStencilMask( GLuint mask );
+extern glStencilMask
 
-extern glStencilOp( GLenum fail, GLenum zfail, GLenum zpass );
+extern glStencilOp
 
-extern glClearStencil( GLint s );
+extern glClearStencil
 
 
 
-/*
- * Texture mapping
- */
+;
+; Texture mapping
+;
 
-extern glTexGend( GLenum coord, GLenum pname, GLdouble param );
-extern glTexGenf( GLenum coord, GLenum pname, GLfloat param );
-extern glTexGeni( GLenum coord, GLenum pname, GLint param );
+extern glTexGend
+extern glTexGenf
+extern glTexGeni
 
-extern glTexGendv( GLenum coord, GLenum pname, const GLdouble *params );
-extern glTexGenfv( GLenum coord, GLenum pname, const GLfloat *params );
-extern glTexGeniv( GLenum coord, GLenum pname, const GLint *params );
+extern glTexGendv
+extern glTexGenfv
+extern glTexGeniv
 
-extern glGetTexGendv( GLenum coord, GLenum pname, GLdouble *params );
-extern glGetTexGenfv( GLenum coord, GLenum pname, GLfloat *params );
-extern glGetTexGeniv( GLenum coord, GLenum pname, GLint *params );
+extern glGetTexGendv
+extern glGetTexGenfv
+extern glGetTexGeniv
 
 
-extern glTexEnvf( GLenum target, GLenum pname, GLfloat param );
-extern glTexEnvi( GLenum target, GLenum pname, GLint param );
+extern glTexEnvf
+extern glTexEnvi
 
-extern glTexEnvfv( GLenum target, GLenum pname, const GLfloat *params );
-extern glTexEnviv( GLenum target, GLenum pname, const GLint *params );
+extern glTexEnvfv
+extern glTexEnviv
 
-extern glGetTexEnvfv( GLenum target, GLenum pname, GLfloat *params );
-extern glGetTexEnviv( GLenum target, GLenum pname, GLint *params );
+extern glGetTexEnvfv
+extern glGetTexEnviv
 
 
-extern glTexParameterf( GLenum target, GLenum pname, GLfloat param );
-extern glTexParameteri( GLenum target, GLenum pname, GLint param );
+extern glTexParameterf
+extern glTexParameteri
 
-extern glTexParameterfv( GLenum target, GLenum pname,
-                                          const GLfloat *params );
-extern glTexParameteriv( GLenum target, GLenum pname,
-                                          const GLint *params );
+extern glTexParameterfv
+extern glTexParameteriv
 
-extern glGetTexParameterfv( GLenum target,
-                                           GLenum pname, GLfloat *params);
-extern glGetTexParameteriv( GLenum target,
-                                           GLenum pname, GLint *params );
+extern glGetTexParameterfv
+extern glGetTexParameteriv
 
-extern glGetTexLevelParameterfv( GLenum target, GLint level,
-                                                GLenum pname, GLfloat *params );
-extern glGetTexLevelParameteriv( GLenum target, GLint level,
-                                                GLenum pname, GLint *params );
+extern glGetTexLevelParameterfv
+extern glGetTexLevelParameteriv
 
 
-extern glTexImage1D( GLenum target, GLint level,
-                                    GLint internalFormat,
-                                    GLsizei width, GLint border,
-                                    GLenum format, GLenum type,
-                                    const GLvoid *pixels );
+extern glTexImage1D
 
-extern glTexImage2D( GLenum target, GLint level,
-                                    GLint internalFormat,
-                                    GLsizei width, GLsizei height,
-                                    GLint border, GLenum format, GLenum type,
-                                    const GLvoid *pixels );
+extern glTexImage2D
 
-extern glGetTexImage( GLenum target, GLint level,
-                                     GLenum format, GLenum type,
-                                     GLvoid *pixels );
+extern glGetTexImage
 
 
-/* 1.1 functions */
+; 1.1 functions
 
-extern glGenTextures( GLsizei n, GLuint *textures );
+extern glGenTextures
 
-extern glDeleteTextures( GLsizei n, const GLuint *textures);
+extern glDeleteTextures
 
-extern glBindTexture( GLenum target, GLuint texture );
+extern glBindTexture
 
-extern glPrioritizeTextures( GLsizei n,
-                                            const GLuint *textures,
-                                            const GLclampf *priorities );
+extern glPrioritizeTextures
 
-extern glAreTexturesResident( GLsizei n,
-                                                  const GLuint *textures,
-                                                  GLboolean *residences );
+extern glAreTexturesResident
 
-extern glIsTexture( GLuint texture );
+extern glIsTexture
 
 
-extern glTexSubImage1D( GLenum target, GLint level,
-                                       GLint xoffset,
-                                       GLsizei width, GLenum format,
-                                       GLenum type, const GLvoid *pixels );
+extern glTexSubImage1D
 
+extern glTexSubImage2D
 
-extern glTexSubImage2D( GLenum target, GLint level,
-                                       GLint xoffset, GLint yoffset,
-                                       GLsizei width, GLsizei height,
-                                       GLenum format, GLenum type,
-                                       const GLvoid *pixels );
 
+extern glCopyTexImage1D
 
-extern glCopyTexImage1D( GLenum target, GLint level,
-                                        GLenum internalformat,
-                                        GLint x, GLint y,
-                                        GLsizei width, GLint border );
+extern glCopyTexImage2D
 
 
-extern glCopyTexImage2D( GLenum target, GLint level,
-                                        GLenum internalformat,
-                                        GLint x, GLint y,
-                                        GLsizei width, GLsizei height,
-                                        GLint border );
+extern glCopyTexSubImage1D
 
+extern glCopyTexSubImage2D
 
-extern glCopyTexSubImage1D( GLenum target, GLint level,
-                                           GLint xoffset, GLint x, GLint y,
-                                           GLsizei width );
 
+;
+; Evaluators
+;
 
-extern glCopyTexSubImage2D( GLenum target, GLint level,
-                                           GLint xoffset, GLint yoffset,
-                                           GLint x, GLint y,
-                                           GLsizei width, GLsizei height );
+extern glMap1d
+extern glMap1f
 
+extern glMap2d
+extern glMap2f
 
-/*
- * Evaluators
- */
+extern glGetMapdv
+extern glGetMapfv
+extern glGetMapiv
 
-extern glMap1d( GLenum target, GLdouble u1, GLdouble u2,
-                               GLint stride,
-                               GLint order, const GLdouble *points );
-extern glMap1f( GLenum target, GLfloat u1, GLfloat u2,
-                               GLint stride,
-                               GLint order, const GLfloat *points );
 
-extern glMap2d( GLenum target,
-		     GLdouble u1, GLdouble u2, GLint ustride, GLint uorder,
-		     GLdouble v1, GLdouble v2, GLint vstride, GLint vorder,
-		     const GLdouble *points );
-extern glMap2f( GLenum target,
-		     GLfloat u1, GLfloat u2, GLint ustride, GLint uorder,
-		     GLfloat v1, GLfloat v2, GLint vstride, GLint vorder,
-		     const GLfloat *points );
+extern glEvalCoord1d
+extern glEvalCoord1f
 
-extern glGetMapdv( GLenum target, GLenum query, GLdouble *v );
-extern glGetMapfv( GLenum target, GLenum query, GLfloat *v );
-extern glGetMapiv( GLenum target, GLenum query, GLint *v );
+extern glEvalCoord1dv
+extern glEvalCoord1fv
 
-extern glEvalCoord1d( GLdouble u );
-extern glEvalCoord1f( GLfloat u );
+extern glEvalCoord2d
+extern glEvalCoord2f
 
-extern glEvalCoord1dv( const GLdouble *u );
-extern glEvalCoord1fv( const GLfloat *u );
+extern glEvalCoord2dv
+extern glEvalCoord2fv
 
-extern glEvalCoord2d( GLdouble u, GLdouble v );
-extern glEvalCoord2f( GLfloat u, GLfloat v );
 
-extern glEvalCoord2dv( const GLdouble *u );
-extern glEvalCoord2fv( const GLfloat *u );
+extern glMapGrid1d
+extern glMapGrid1f
 
-extern glMapGrid1d( GLint un, GLdouble u1, GLdouble u2 );
-extern glMapGrid1f( GLint un, GLfloat u1, GLfloat u2 );
+extern glMapGrid2d
+extern glMapGrid2f
 
-extern glMapGrid2d( GLint un, GLdouble u1, GLdouble u2,
-                                   GLint vn, GLdouble v1, GLdouble v2 );
-extern glMapGrid2f( GLint un, GLfloat u1, GLfloat u2,
-                                   GLint vn, GLfloat v1, GLfloat v2 );
 
-extern glEvalPoint1( GLint i );
+extern glEvalPoint1
 
-extern glEvalPoint2( GLint i, GLint j );
+extern glEvalPoint2
 
-extern glEvalMesh1( GLenum mode, GLint i1, GLint i2 );
+extern glEvalMesh1
 
-extern glEvalMesh2( GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2 );
+extern glEvalMesh2
 
 
-/*
- * Fog
- */
+;
+; Fog
+;
 
-extern glFogf( GLenum pname, GLfloat param );
+extern glFogf
 
-extern glFogi( GLenum pname, GLint param );
+extern glFogi
 
-extern glFogfv( GLenum pname, const GLfloat *params );
+extern glFogfv
 
-extern glFogiv( GLenum pname, const GLint *params );
+extern glFogiv
 
 
-/*
- * Selection and Feedback
- */
+;
+; Selection and Feedback
+;
 
-extern glFeedbackBuffer( GLsizei size, GLenum type, GLfloat *buffer );
+extern glFeedbackBuffer
 
-extern glPassThrough( GLfloat token );
+extern glPassThrough
 
-extern glSelectBuffer( GLsizei size, GLuint *buffer );
+extern glSelectBuffer
 
-extern glInitNames( void );
+extern glInitNames
 
-extern glLoadName( GLuint name );
+extern glLoadName
 
-extern glPushName( GLuint name );
+extern glPushName
 
-extern glPopName( void );
+extern glPopName
 
 
 
-/*
- * OpenGL 1.2
- */
+;
+; OpenGL 1.2
+;
 
 %define GL_RESCALE_NORMAL			0x803A
 %define GL_CLAMP_TO_EDGE			0x812F
@@ -1347,38 +1296,18 @@ extern glPopName( void );
 %define GL_MAX_3D_TEXTURE_SIZE			0x8073
 %define GL_TEXTURE_BINDING_3D			0x806A
 
-extern glDrawRangeElements( GLenum mode, GLuint start,
-	GLuint end, GLsizei count, GLenum type, const GLvoid *indices );
+extern glDrawRangeElements
 
-extern glTexImage3D( GLenum target, GLint level,
-                                      GLint internalFormat,
-                                      GLsizei width, GLsizei height,
-                                      GLsizei depth, GLint border,
-                                      GLenum format, GLenum type,
-                                      const GLvoid *pixels );
+extern glTexImage3D
 
-extern glTexSubImage3D( GLenum target, GLint level,
-                                         GLint xoffset, GLint yoffset,
-                                         GLint zoffset, GLsizei width,
-                                         GLsizei height, GLsizei depth,
-                                         GLenum format,
-                                         GLenum type, const GLvoid *pixels);
+extern glTexSubImage3D
 
-extern glCopyTexSubImage3D( GLenum target, GLint level,
-                                             GLint xoffset, GLint yoffset,
-                                             GLint zoffset, GLint x,
-                                             GLint y, GLsizei width,
-                                             GLsizei height );
-
-typedef void (APIENTRYP PFNGLDRAWRANGEELEMENTSPROC) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
-typedef void (APIENTRYP PFNGLTEXIMAGE3DPROC) (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-typedef void (APIENTRYP PFNGLTEXSUBIMAGE3DPROC) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
-typedef void (APIENTRYP PFNGLCOPYTEXSUBIMAGE3DPROC) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+extern glCopyTexSubImage3D
 
 
-/*
- * GL_ARB_imaging
- */
+;
+; GL_ARB_imaging
+;
 
 %define GL_CONSTANT_COLOR			0x8001
 %define GL_ONE_MINUS_CONSTANT_COLOR		0x8002
@@ -1457,122 +1386,80 @@ typedef void (APIENTRYP PFNGLCOPYTEXSUBIMAGE3DPROC) (GLenum target, GLint level,
 %define GL_BLEND_COLOR				0x8005
 
 
-extern glColorTable( GLenum target, GLenum internalformat,
-                                    GLsizei width, GLenum format,
-                                    GLenum type, const GLvoid *table );
+extern glColorTable
 
-extern glColorSubTable( GLenum target,
-                                       GLsizei start, GLsizei count,
-                                       GLenum format, GLenum type,
-                                       const GLvoid *data );
+extern glColorSubTable
 
-extern glColorTableParameteriv(GLenum target, GLenum pname,
-                                              const GLint *params);
+extern glColorTableParameteriv
 
-extern glColorTableParameterfv(GLenum target, GLenum pname,
-                                              const GLfloat *params);
+extern glColorTableParameterfv
 
-extern glCopyColorSubTable( GLenum target, GLsizei start,
-                                           GLint x, GLint y, GLsizei width );
+extern glCopyColorSubTable
 
-extern glCopyColorTable( GLenum target, GLenum internalformat,
-                                        GLint x, GLint y, GLsizei width );
+extern glCopyColorTable
 
-extern glGetColorTable( GLenum target, GLenum format,
-                                       GLenum type, GLvoid *table );
+extern glGetColorTable
 
-extern glGetColorTableParameterfv( GLenum target, GLenum pname,
-                                                  GLfloat *params );
+extern glGetColorTableParameterfv
 
-extern glGetColorTableParameteriv( GLenum target, GLenum pname,
-                                                  GLint *params );
+extern glGetColorTableParameteriv
 
-extern glBlendEquation( GLenum mode );
+extern glBlendEquation
 
-extern glBlendColor( GLclampf red, GLclampf green,
-                                    GLclampf blue, GLclampf alpha );
+extern glBlendColor
 
-extern glHistogram( GLenum target, GLsizei width,
-				   GLenum internalformat, GLboolean sink );
+extern glHistogram
 
-extern glResetHistogram( GLenum target );
+extern glResetHistogram
 
-extern glGetHistogram( GLenum target, GLboolean reset,
-				      GLenum format, GLenum type,
-				      GLvoid *values );
+extern glGetHistogram
 
-extern glGetHistogramParameterfv( GLenum target, GLenum pname,
-						 GLfloat *params );
+extern glGetHistogramParameterfv
 
-extern glGetHistogramParameteriv( GLenum target, GLenum pname,
-						 GLint *params );
+extern glGetHistogramParameteriv
 
-extern glMinmax( GLenum target, GLenum internalformat,
-				GLboolean sink );
+extern glMinmax
 
-extern glResetMinmax( GLenum target );
+extern glResetMinmax
 
-extern glGetMinmax( GLenum target, GLboolean reset,
-                                   GLenum format, GLenum types,
-                                   GLvoid *values );
+extern glGetMinmax
 
-extern glGetMinmaxParameterfv( GLenum target, GLenum pname,
-					      GLfloat *params );
+extern glGetMinmaxParameterfv
 
-extern glGetMinmaxParameteriv( GLenum target, GLenum pname,
-					      GLint *params );
+extern glGetMinmaxParameteriv
 
-extern glConvolutionFilter1D( GLenum target,
-	GLenum internalformat, GLsizei width, GLenum format, GLenum type,
-	const GLvoid *image );
+extern glConvolutionFilter1D
 
-extern glConvolutionFilter2D( GLenum target,
-	GLenum internalformat, GLsizei width, GLsizei height, GLenum format,
-	GLenum type, const GLvoid *image );
+extern glConvolutionFilter2D
 
-extern glConvolutionParameterf( GLenum target, GLenum pname,
-	GLfloat params );
+extern glConvolutionParameterf
 
-extern glConvolutionParameterfv( GLenum target, GLenum pname,
-	const GLfloat *params );
+extern glConvolutionParameterfv
 
-extern glConvolutionParameteri( GLenum target, GLenum pname,
-	GLint params );
+extern glConvolutionParameteri
 
-extern glConvolutionParameteriv( GLenum target, GLenum pname,
-	const GLint *params );
+extern glConvolutionParameteriv
 
-extern glCopyConvolutionFilter1D( GLenum target,
-	GLenum internalformat, GLint x, GLint y, GLsizei width );
+extern glCopyConvolutionFilter1D
 
-extern glCopyConvolutionFilter2D( GLenum target,
-	GLenum internalformat, GLint x, GLint y, GLsizei width,
-	GLsizei height);
+extern glCopyConvolutionFilter2D
 
-extern glGetConvolutionFilter( GLenum target, GLenum format,
-	GLenum type, GLvoid *image );
+extern glGetConvolutionFilter
 
-extern glGetConvolutionParameterfv( GLenum target, GLenum pname,
-	GLfloat *params );
+extern glGetConvolutionParameterfv
 
-extern glGetConvolutionParameteriv( GLenum target, GLenum pname,
-	GLint *params );
+extern glGetConvolutionParameteriv
 
-extern glSeparableFilter2D( GLenum target,
-	GLenum internalformat, GLsizei width, GLsizei height, GLenum format,
-	GLenum type, const GLvoid *row, const GLvoid *column );
+extern glSeparableFilter2D
 
-extern glGetSeparableFilter( GLenum target, GLenum format,
-	GLenum type, GLvoid *row, GLvoid *column, GLvoid *span );
+extern glGetSeparableFilter
 
 
+;
+; OpenGL 1.3
+;
 
-
-/*
- * OpenGL 1.3
- */
-
-/* multitexture */
+; multitexture
 %define GL_TEXTURE0				0x84C0
 %define GL_TEXTURE1				0x84C1
 %define GL_TEXTURE2				0x84C2
@@ -1608,7 +1495,7 @@ extern glGetSeparableFilter( GLenum target, GLenum format,
 %define GL_ACTIVE_TEXTURE			0x84E0
 %define GL_CLIENT_ACTIVE_TEXTURE		0x84E1
 %define GL_MAX_TEXTURE_UNITS			0x84E2
-/* texture_cube_map */
+; texture_cube_map
 %define GL_NORMAL_MAP				0x8511
 %define GL_REFLECTION_MAP			0x8512
 %define GL_TEXTURE_CUBE_MAP			0x8513
@@ -1621,7 +1508,7 @@ extern glGetSeparableFilter( GLenum target, GLenum format,
 %define GL_TEXTURE_CUBE_MAP_NEGATIVE_Z		0x851A
 %define GL_PROXY_TEXTURE_CUBE_MAP		0x851B
 %define GL_MAX_CUBE_MAP_TEXTURE_SIZE		0x851C
-/* texture_compression */
+; texture_compression
 %define GL_COMPRESSED_ALPHA			0x84E9
 %define GL_COMPRESSED_LUMINANCE			0x84EA
 %define GL_COMPRESSED_LUMINANCE_ALPHA		0x84EB
@@ -1633,7 +1520,7 @@ extern glGetSeparableFilter( GLenum target, GLenum format,
 %define GL_TEXTURE_COMPRESSED			0x86A1
 %define GL_NUM_COMPRESSED_TEXTURE_FORMATS	0x86A2
 %define GL_COMPRESSED_TEXTURE_FORMATS		0x86A3
-/* multisample */
+; multisample 
 %define GL_MULTISAMPLE				0x809D
 %define GL_SAMPLE_ALPHA_TO_COVERAGE		0x809E
 %define GL_SAMPLE_ALPHA_TO_ONE			0x809F
@@ -1643,12 +1530,12 @@ extern glGetSeparableFilter( GLenum target, GLenum format,
 %define GL_SAMPLE_COVERAGE_VALUE		0x80AA
 %define GL_SAMPLE_COVERAGE_INVERT		0x80AB
 %define GL_MULTISAMPLE_BIT			0x20000000
-/* transpose_matrix */
+; transpose_matrix
 %define GL_TRANSPOSE_MODELVIEW_MATRIX		0x84E3
 %define GL_TRANSPOSE_PROJECTION_MATRIX		0x84E4
 %define GL_TRANSPOSE_TEXTURE_MATRIX		0x84E5
 %define GL_TRANSPOSE_COLOR_MATRIX		0x84E6
-/* texture_env_combine */
+; texture_env_combine
 %define GL_COMBINE				0x8570
 %define GL_COMBINE_RGB				0x8571
 %define GL_COMBINE_ALPHA			0x8572
@@ -1671,121 +1558,109 @@ extern glGetSeparableFilter( GLenum target, GLenum format,
 %define GL_CONSTANT				0x8576
 %define GL_PRIMARY_COLOR			0x8577
 %define GL_PREVIOUS				0x8578
-/* texture_env_dot3 */
+; texture_env_dot3
 %define GL_DOT3_RGB				0x86AE
 %define GL_DOT3_RGBA				0x86AF
-/* texture_border_clamp */
+; texture_border_clamp
 %define GL_CLAMP_TO_BORDER			0x812D
 
-extern glActiveTexture( GLenum texture );
+extern glActiveTexture
 
-extern glClientActiveTexture( GLenum texture );
+extern glClientActiveTexture
 
-extern glCompressedTexImage1D( GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexImage1D
 
-extern glCompressedTexImage2D( GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexImage2D
 
-extern glCompressedTexImage3D( GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexImage3D
 
-extern glCompressedTexSubImage1D( GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexSubImage1D
 
-extern glCompressedTexSubImage2D( GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexSubImage2D
 
-extern glCompressedTexSubImage3D( GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data );
+extern glCompressedTexSubImage3D
 
-extern glGetCompressedTexImage( GLenum target, GLint lod, GLvoid *img );
+extern glGetCompressedTexImage
 
-extern glMultiTexCoord1d( GLenum target, GLdouble s );
+extern glMultiTexCoord1d
 
-extern glMultiTexCoord1dv( GLenum target, const GLdouble *v );
+extern glMultiTexCoord1dv
 
-extern glMultiTexCoord1f( GLenum target, GLfloat s );
+extern glMultiTexCoord1f
 
-extern glMultiTexCoord1fv( GLenum target, const GLfloat *v );
+extern glMultiTexCoord1fv
 
-extern glMultiTexCoord1i( GLenum target, GLint s );
+extern glMultiTexCoord1i
 
-extern glMultiTexCoord1iv( GLenum target, const GLint *v );
+extern glMultiTexCoord1iv
 
-extern glMultiTexCoord1s( GLenum target, GLshort s );
+extern glMultiTexCoord1s
 
-extern glMultiTexCoord1sv( GLenum target, const GLshort *v );
+extern glMultiTexCoord1sv
 
-extern glMultiTexCoord2d( GLenum target, GLdouble s, GLdouble t );
+extern glMultiTexCoord2d
 
-extern glMultiTexCoord2dv( GLenum target, const GLdouble *v );
+extern glMultiTexCoord2dv
 
-extern glMultiTexCoord2f( GLenum target, GLfloat s, GLfloat t );
+extern glMultiTexCoord2f
 
-extern glMultiTexCoord2fv( GLenum target, const GLfloat *v );
+extern glMultiTexCoord2fv
 
-extern glMultiTexCoord2i( GLenum target, GLint s, GLint t );
+extern glMultiTexCoord2i
 
-extern glMultiTexCoord2iv( GLenum target, const GLint *v );
+extern glMultiTexCoord2iv
 
-extern glMultiTexCoord2s( GLenum target, GLshort s, GLshort t );
+extern glMultiTexCoord2s
 
-extern glMultiTexCoord2sv( GLenum target, const GLshort *v );
+extern glMultiTexCoord2sv
 
-extern glMultiTexCoord3d( GLenum target, GLdouble s, GLdouble t, GLdouble r );
+extern glMultiTexCoord3d
 
-extern glMultiTexCoord3dv( GLenum target, const GLdouble *v );
+extern glMultiTexCoord3dv
 
-extern glMultiTexCoord3f( GLenum target, GLfloat s, GLfloat t, GLfloat r );
+extern glMultiTexCoord3f
 
-extern glMultiTexCoord3fv( GLenum target, const GLfloat *v );
+extern glMultiTexCoord3fv
 
-extern glMultiTexCoord3i( GLenum target, GLint s, GLint t, GLint r );
+extern glMultiTexCoord3i
 
-extern glMultiTexCoord3iv( GLenum target, const GLint *v );
+extern glMultiTexCoord3iv
 
-extern glMultiTexCoord3s( GLenum target, GLshort s, GLshort t, GLshort r );
+extern glMultiTexCoord3s
 
-extern glMultiTexCoord3sv( GLenum target, const GLshort *v );
+extern glMultiTexCoord3sv
 
-extern glMultiTexCoord4d( GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q );
+extern glMultiTexCoord4d
 
-extern glMultiTexCoord4dv( GLenum target, const GLdouble *v );
+extern glMultiTexCoord4dv
 
-extern glMultiTexCoord4f( GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q );
+extern glMultiTexCoord4f
 
-extern glMultiTexCoord4fv( GLenum target, const GLfloat *v );
+extern glMultiTexCoord4fv
 
-extern glMultiTexCoord4i( GLenum target, GLint s, GLint t, GLint r, GLint q );
+extern glMultiTexCoord4i
 
-extern glMultiTexCoord4iv( GLenum target, const GLint *v );
+extern glMultiTexCoord4iv
 
-extern glMultiTexCoord4s( GLenum target, GLshort s, GLshort t, GLshort r, GLshort q );
+extern glMultiTexCoord4s
 
-extern glMultiTexCoord4sv( GLenum target, const GLshort *v );
+extern glMultiTexCoord4sv
 
 
-extern glLoadTransposeMatrixd( const GLdouble m[16] );
+extern glLoadTransposeMatrixd
 
-extern glLoadTransposeMatrixf( const GLfloat m[16] );
+extern glLoadTransposeMatrixf
 
-extern glMultTransposeMatrixd( const GLdouble m[16] );
+extern glMultTransposeMatrixd
 
-extern glMultTransposeMatrixf( const GLfloat m[16] );
+extern glMultTransposeMatrixf
 
 extern glSampleCoverage( GLclampf value, GLboolean invert );
 
 
-typedef void (APIENTRYP PFNGLACTIVETEXTUREPROC) (GLenum texture);
-typedef void (APIENTRYP PFNGLSAMPLECOVERAGEPROC) (GLclampf value, GLboolean invert);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXIMAGE3DPROC) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXIMAGE2DPROC) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXIMAGE1DPROC) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC) (GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
-typedef void (APIENTRYP PFNGLGETCOMPRESSEDTEXIMAGEPROC) (GLenum target, GLint level, GLvoid *img);
-
-
-
-/*
- * GL_ARB_multitexture (ARB extension 1 and OpenGL 1.2.1)
- */
+;
+; GL_ARB_multitexture (ARB extension 1 and OpenGL 1.2.1)
+;
 %ifndef GL_ARB_multitexture
 %define GL_ARB_multitexture 1
 
@@ -1825,100 +1700,48 @@ typedef void (APIENTRYP PFNGLGETCOMPRESSEDTEXIMAGEPROC) (GLenum target, GLint le
 %define GL_CLIENT_ACTIVE_TEXTURE_ARB		0x84E1
 %define GL_MAX_TEXTURE_UNITS_ARB		0x84E2
 
-extern glActiveTextureARB(GLenum texture);
-extern glClientActiveTextureARB(GLenum texture);
-extern glMultiTexCoord1dARB(GLenum target, GLdouble s);
-extern glMultiTexCoord1dvARB(GLenum target, const GLdouble *v);
-extern glMultiTexCoord1fARB(GLenum target, GLfloat s);
-extern glMultiTexCoord1fvARB(GLenum target, const GLfloat *v);
-extern glMultiTexCoord1iARB(GLenum target, GLint s);
-extern glMultiTexCoord1ivARB(GLenum target, const GLint *v);
-extern glMultiTexCoord1sARB(GLenum target, GLshort s);
-extern glMultiTexCoord1svARB(GLenum target, const GLshort *v);
-extern glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t);
-extern glMultiTexCoord2dvARB(GLenum target, const GLdouble *v);
-extern glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t);
-extern glMultiTexCoord2fvARB(GLenum target, const GLfloat *v);
-extern glMultiTexCoord2iARB(GLenum target, GLint s, GLint t);
-extern glMultiTexCoord2ivARB(GLenum target, const GLint *v);
-extern glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t);
-extern glMultiTexCoord2svARB(GLenum target, const GLshort *v);
-extern glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r);
-extern glMultiTexCoord3dvARB(GLenum target, const GLdouble *v);
-extern glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r);
-extern glMultiTexCoord3fvARB(GLenum target, const GLfloat *v);
-extern glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r);
-extern glMultiTexCoord3ivARB(GLenum target, const GLint *v);
-extern glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r);
-extern glMultiTexCoord3svARB(GLenum target, const GLshort *v);
-extern glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-extern glMultiTexCoord4dvARB(GLenum target, const GLdouble *v);
-extern glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-extern glMultiTexCoord4fvARB(GLenum target, const GLfloat *v);
-extern glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q);
-extern glMultiTexCoord4ivARB(GLenum target, const GLint *v);
-extern glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
-extern glMultiTexCoord4svARB(GLenum target, const GLshort *v);
+extern glActiveTextureARB
+extern glClientActiveTextureARB
+extern glMultiTexCoord1dARB
+extern glMultiTexCoord1dvARB
+extern glMultiTexCoord1fARB
+extern glMultiTexCoord1fvARB
+extern glMultiTexCoord1iARB
+extern glMultiTexCoord1ivARB
+extern glMultiTexCoord1sARB
+extern glMultiTexCoord1svARB
+extern glMultiTexCoord2dARB
+extern glMultiTexCoord2dvARB
+extern glMultiTexCoord2fARB
+extern glMultiTexCoord2fvARB
+extern glMultiTexCoord2iARB
+extern glMultiTexCoord2ivARB
+extern glMultiTexCoord2sARB
+extern glMultiTexCoord2svARB
+extern glMultiTexCoord3dARB
+extern glMultiTexCoord3dvARB
+extern glMultiTexCoord3fARB
+extern glMultiTexCoord3fvARB
+extern glMultiTexCoord3iARB
+extern glMultiTexCoord3ivARB
+extern glMultiTexCoord3sARB
+extern glMultiTexCoord3svARB
+extern glMultiTexCoord4dARB
+extern glMultiTexCoord4dvARB
+extern glMultiTexCoord4fARB
+extern glMultiTexCoord4fvARB
+extern glMultiTexCoord4iARB
+extern glMultiTexCoord4ivARB
+extern glMultiTexCoord4sARB
+extern glMultiTexCoord4svARB
 
-typedef void (APIENTRYP PFNGLACTIVETEXTUREARBPROC) (GLenum texture);
-typedef void (APIENTRYP PFNGLCLIENTACTIVETEXTUREARBPROC) (GLenum texture);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1DARBPROC) (GLenum target, GLdouble s);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1DVARBPROC) (GLenum target, const GLdouble *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1FARBPROC) (GLenum target, GLfloat s);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1FVARBPROC) (GLenum target, const GLfloat *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1IARBPROC) (GLenum target, GLint s);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1IVARBPROC) (GLenum target, const GLint *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1SARBPROC) (GLenum target, GLshort s);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD1SVARBPROC) (GLenum target, const GLshort *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2DARBPROC) (GLenum target, GLdouble s, GLdouble t);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2DVARBPROC) (GLenum target, const GLdouble *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2FARBPROC) (GLenum target, GLfloat s, GLfloat t);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2FVARBPROC) (GLenum target, const GLfloat *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2IARBPROC) (GLenum target, GLint s, GLint t);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2IVARBPROC) (GLenum target, const GLint *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2SARBPROC) (GLenum target, GLshort s, GLshort t);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD2SVARBPROC) (GLenum target, const GLshort *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3DARBPROC) (GLenum target, GLdouble s, GLdouble t, GLdouble r);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3DVARBPROC) (GLenum target, const GLdouble *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3FARBPROC) (GLenum target, GLfloat s, GLfloat t, GLfloat r);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3FVARBPROC) (GLenum target, const GLfloat *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3IARBPROC) (GLenum target, GLint s, GLint t, GLint r);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3IVARBPROC) (GLenum target, const GLint *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3SARBPROC) (GLenum target, GLshort s, GLshort t, GLshort r);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD3SVARBPROC) (GLenum target, const GLshort *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4DARBPROC) (GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4DVARBPROC) (GLenum target, const GLdouble *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4FARBPROC) (GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4FVARBPROC) (GLenum target, const GLfloat *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4IARBPROC) (GLenum target, GLint s, GLint t, GLint r, GLint q);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4IVARBPROC) (GLenum target, const GLint *v);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4SARBPROC) (GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
-typedef void (APIENTRYP PFNGLMULTITEXCOORD4SVARBPROC) (GLenum target, const GLshort *v);
-
-%endif /* GL_ARB_multitexture */
+%endif ; GL_ARB_multitexture
 
 
-
-/*
- * Define this token if you want "old-style" header file behaviour (extensions
- * defined in gl.h).  Otherwise, extensions will be included from glext.h.
- */
-%if defined(GL_GLEXT_LEGACY)
-
-/* All extensions that used to be here are now found in glext.h */
-
-%else  /* GL_GLEXT_LEGACY */
-
-%include <GL/glext.h>
-
-%endif  /* GL_GLEXT_LEGACY */
-
-
-
-/*
- * ???. GL_MESA_packed_depth_stencil
- * XXX obsolete
- */
+;
+; ???. GL_MESA_packed_depth_stencil
+; XXX obsolete
+;
 %ifndef GL_MESA_packed_depth_stencil
 %define GL_MESA_packed_depth_stencil 1
 
@@ -1928,7 +1751,7 @@ typedef void (APIENTRYP PFNGLMULTITEXCOORD4SVARBPROC) (GLenum target, const GLsh
 %define GL_UNSIGNED_SHORT_15_1_MESA		0x8753
 %define GL_UNSIGNED_SHORT_1_15_REV_MESA		0x8754
 
-%endif /* GL_MESA_packed_depth_stencil */
+%endif ; GL_MESA_packed_depth_stencil
 
 
 %ifndef GL_ATI_blend_equation_separate
@@ -1936,30 +1759,9 @@ typedef void (APIENTRYP PFNGLMULTITEXCOORD4SVARBPROC) (GLenum target, const GLsh
 
 %define GL_ALPHA_BLEND_EQUATION_ATI	        0x883D
 
-extern glBlendEquationSeparateATI( GLenum modeRGB, GLenum modeA );
-typedef void (APIENTRYP PFNGLBLENDEQUATIONSEPARATEATIPROC) (GLenum modeRGB, GLenum modeA);
+extern glBlendEquationSeparateATI
 
-%endif /* GL_ATI_blend_equation_separate */
-
-
-/* GL_OES_EGL_image */
-%if !defined(GL_OES_EGL_image) && !defined(GL_EXT_EGL_image_storage)
-typedef void* GLeglImageOES;
-%endif
-
-%ifndef GL_OES_EGL_image
-%define GL_OES_EGL_image 1
-%ifdef GL_GLEXT_PROTOTYPES
-GLAPI void APIENTRY glEGLImageTargetTexture2DOES (GLenum target, GLeglImageOES image);
-GLAPI void APIENTRY glEGLImageTargetRenderbufferStorageOES (GLenum target, GLeglImageOES image);
-%endif
-typedef void (APIENTRYP PFNGLEGLIMAGETARGETTEXTURE2DOESPROC) (GLenum target, GLeglImageOES image);
-typedef void (APIENTRYP PFNGLEGLIMAGETARGETRENDERBUFFERSTORAGEOESPROC) (GLenum target, GLeglImageOES image);
-%endif
+%endif ; GL_ATI_blend_equation_separate
 
 
-%ifdef __cplusplus
-}
-%endif
-
-%endif /* __gl_h_ */
+%endif ; __gl_asm_ 
