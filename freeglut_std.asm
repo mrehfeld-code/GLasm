@@ -1,7 +1,7 @@
-%ifndef  __FREEGLUT_STD_H__
-%define  __FREEGLUT_STD_H__
+%ifndef  __FREEGLUT_STD_ASM__
+%define  __FREEGLUT_STD_ASM__
 
-;;
+;
 ; freeglut_std.h
 ;
 ; The GLUT-compatible part of the freeglut library include file
@@ -26,7 +26,7 @@
 ; PAWEL W. OLSZTA BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 ; IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 ; CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-;;
+;
 
 ;
 ; The freeglut and GLUT API versions
@@ -485,6 +485,6 @@ extern glutExtensionSupported
 extern glutReportErrors
 
 
-/*** END OF FILE ***/
+; *** END OF FILE ***
 
-%endif /* __FREEGLUT_STD_H__ */
+%endif ; __FREEGLUT_STD_ASM__
