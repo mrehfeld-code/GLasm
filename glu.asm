@@ -28,8 +28,8 @@
 ; Silicon Graphics, Inc.
 ;
 
-%ifndef __glu_h__
-%define __glu_h__
+%ifndef __glu_asm__
+%define __glu_asm__
 
 %include "gl.asm"
 
@@ -290,4 +290,4 @@ extern gluTessVertex
 extern gluUnProject
 extern gluUnProject4
 
-%endif /* __glu_h__ */
+%endif ; __glu_h__
